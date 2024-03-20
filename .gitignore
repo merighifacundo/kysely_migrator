@@ -1,0 +1,84 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+dist
+tmp
+/out-tsc
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+**/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# env file
+.env
+.env*
+
+
+# Google cloud service account key file
+service-account-key.json
+webhook-service-account-key.json
+
+# Test files
+response_times
+cucumber-report.html
+created_accounts.txt
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# k1 script files
+output.csv
+pdfs/
+csv/
+
+# mvp script files
+output
+
+# Openapi
+apps/api-server/open-api/spec.yaml
+apps/api-server/open-api/generated-client
+
+# Delete unused grasshopper accounts utility script
+apps/backend/src/scripts/delete_unused_grasshopper_accounts/tp_basic_key.txt
+apps/backend/src/scripts/delete_unused_grasshopper_accounts/output
+
+
+.nx/cache
+
+cucumber-report.html
+test-results/
+
