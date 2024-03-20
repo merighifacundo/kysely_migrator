@@ -2,30 +2,35 @@ import { Kysely, sql } from 'kysely'
 
 export async function up(db: Kysely<any>): Promise<void> {
   await db.schema
-    .createTable('digitalcard.person')
+    .createTable('digitalcard.user')
     .addColumn('id', 'serial', (col) => col.primaryKey())
-    .addColumn('first_name', 'varchar', (col) => col.notNull())
+    .addColumn('first_name', 'varchar')
     .addColumn('last_name', 'varchar')
-    .addColumn('gender', 'varchar(50)', (col) => col.notNull())
+    .addColumn('login_data', 'json')
+    .addColumn('email', 'varchar', (col) => col.unique())
     .addColumn('created_at', 'timestamp', (col) =>
       col.defaultTo(sql`now()`).notNull()
     )
     .execute()
 
   await db.schema
-    .createTable('digitalcard.pet')
+    .createTable('digitalcard.card_profile')
     .addColumn('id', 'serial', (col) => col.primaryKey())
-    .addColumn('name', 'varchar', (col) => col.notNull().unique())
-    .addColumn('owner_id', 'integer', (col) =>
-      col.references('digitalcard.person.id').onDelete('cascade').notNull()
+    .addColumn('title', 'varchar')
+    .addColumn('second_line', 'varchar')
+    .addColumn('misc', 'json')
+    .addColumn('user_id', 'integer', (col) =>
+      col.references('digitalcard.user.id').onDelete('cascade').notNull()
     )
-    .addColumn('species', 'varchar', (col) => col.notNull())
+    .addColumn('created_at', 'timestamp', (col) =>
+      col.defaultTo(sql`now()`).notNull()
+    )
     .execute()
 
   await db.schema
-    .createIndex('pet_owner_id_index')
-    .on('digitalcard.pet')
-    .column('owner_id')
+    .createIndex('card_owner_id_index')
+    .on('digitalcard.card_profile')
+    .column('user_id')
     .execute()
 }
 

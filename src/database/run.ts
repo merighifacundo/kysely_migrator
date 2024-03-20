@@ -18,7 +18,7 @@ const runMigrations = async () => {
         migrationTableSchema: 'digitalcard',
         provider: new ClassMigrationProvider()
     })
-    return await migrator.migrateDown();
+    return await migrator.migrateUp();
 }
 
 export default runMigrations;

@@ -9,7 +9,7 @@ import {
   
   export interface Database {
     'digital_card.user': UserTable
-    'digital_card.cardProfile': CardProfileTable
+    'digital_card.card_profile': CardProfileTable
   }
   
   export interface UserTable {
@@ -42,7 +42,6 @@ import {
       login_at: string;
       ip: string | null;
       agent: string | null;
-      plan: 'free' | 'premium';
     }>
   }
   
@@ -58,6 +57,7 @@ import {
     title: string
     second_line: string
     owner_id: number
+    misc: unknown;
   }
   
   export type CardProfile = Selectable<CardProfileTable>
